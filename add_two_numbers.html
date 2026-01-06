@@ -1,77 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
-<script>
-    //creating linked lists
- function ListNode(val, next = null){
-    this.val = val
-    this.next = next
- }
- let node1 = new ListNode(2)
- let node2 = new ListNode(4)
- let node3 = new ListNode(3)
 
- node1.next = node2
- node2.next = node3
+    <script>
+        //creating linked lists
+        function ListNode(val, next = null) {
+            this.val = val
+            this.next = next
+        }
+        let node1 = new ListNode(2)
+        let node2 = new ListNode(4)
+        let node3 = new ListNode(3)
 
- let head = node1
+        node1.next = node2
+        node2.next = node3
 
- function ListNode(val, next = null){
-    this.val = val
-    this.next = next
- }
- let node4 = new ListNode(5)
- let node5 = new ListNode(6)
- let node6 = new ListNode(4)
+        let head = node1
 
- node4.next = node5
- node5.next = node6
-
- let head2 = node4
-
-var addTwoNumbers = function(head, head2) {
-    let dummy = new ListNode(0);
-    let current = dummy;
-    let carry = 0;
-
-    while (head !== null || head2 !== null) {
-        let x 
-        if (head !== null) {
-            x = head.val
-        } else {
-            x=0
+        function ListNode(val, next = null) {
+            this.val = val
+            this.next = next
         }
 
-        let y 
-        if (head2 !== null) {
-            y = head2.val
-        } else {
-            y= 0
+        let node4 = new ListNode(5)
+        let node5 = new ListNode(6)
+        let node6 = new ListNode(4)
+
+        node4.next = node5
+        node5.next = node6
+
+        let head2 = node4
+
+        var addTwoNumbers = function (head, head2) {
+            let dummy = new ListNode(0);
+            let current = dummy;
+            let carry = 0;
+
+            while (head !== null || head2 !== null) {
+                let x
+                if (head !== null) {
+                    x = head.val
+                } else {
+                    x = 0
+                }
+
+                let y
+                if (head2 !== null) {
+                    y = head2.val
+                } else {
+                    y = 0
+                }
+
+                let sum = carry + x + y;
+                carry = Math.floor(sum / 10);
+                current.next = new ListNode(sum % 10);
+                current = current.next;
+
+                if (head !== null) head = head.next;
+                if (head2 !== null) head2 = head2.next
+
+            }
+            if (carry > 0) {
+                current.next = new ListNode(carry);
+            }
+            return dummy.next;
+
         }
-    
-    let sum =carry + x + y;
-    carry = Math.floor(sum / 10);
-    current.next = new ListNode(sum % 10);
-    current = current.next;
+        console.log(dummy.next)
 
-    if (head !== null) head = head.next;
-    if (head2 !== null) head2 = head2.next
-
-    } 
-    if (carry > 0) {
-        current.next =new ListNode(carry);
-    }
-    return dummy.next;
-
- }
- console.log(dummy.next)
-
-</script>
+    </script>
 </body>
+
 </html>
