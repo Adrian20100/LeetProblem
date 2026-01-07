@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longest Substring</title>
+</head>
+<body>
+    <script>
+        
+        var lengthOfLongestSubstring = function(d){
+            let seen = new Set();
+            let p1 = 0;
+            let longest = 0;
+            
+            for (let p2=0; p2<d.length; p2++) {
+                if (seen.has(d[p2])) {
+                    if (p2 - p1 > longest) {
+                        longest = p2 - p1;
+                    }
+
+                    while (seen.has(d[p2])) {
+                        seen.delete(d[p1]);
+                        p1++
+                    }
+                }
+
+                seen.add(d[p2]);
+            }
+            return Math.max(longest, d.length - p1)
+        }
+
+        console.log(lengthOfLongestSubstring('abcabcbb'
+        ))
+         console.log(lengthOfLongestSubstring('bbbbbbbb'
+        ))
+    </script>
+    
+</body>
+</html>
