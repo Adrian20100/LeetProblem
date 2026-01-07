@@ -9,29 +9,29 @@
     <script>
         
         var lengthOfLongestSubstring = function(d){
-            let seen = new Set();
-            let p1 = 0;
-            let longest = 0;
+            let seen = new Set(); // to keep track of seen characters
+            let p1 = 0; // left pointer
+            let longest = 0; // length of longest substring found
             
-            for (let p2=0; p2<d.length; p2++) {
-                if (seen.has(d[p2])) {
-                    if (p2 - p1 > longest) {
-                        longest = p2 - p1;
+            for (let p2=0; p2<d.length; p2++) { // right pointer
+                if (seen.has(d[p2])) { // if character is already seen
+                    if (p2 - p1 > longest) { // update longest if current substring is longer
+                        longest = p2 - p1; // update longest
                     }
 
-                    while (seen.has(d[p2])) {
-                        seen.delete(d[p1]);
-                        p1++
+                    while (seen.has(d[p2])) { // move left pointer to remove duplicates
+                        seen.delete(d[p1]); // remove character at left pointer from seen set
+                        p1++ //move left pointer to the right
                     }
                 }
 
-                seen.add(d[p2]);
+                seen.add(d[p2]); // add current character to seen set
             }
-            return Math.max(longest, d.length - p1)
+            return Math.max(longest, d.length - p1) // return the maximum length found
         }
 
         console.log(lengthOfLongestSubstring('abcabcbb'
-        ))
+        )) // Output: 3
          console.log(lengthOfLongestSubstring('bbbbbbbb'
         ))
     </script>
